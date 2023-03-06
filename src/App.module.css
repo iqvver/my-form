@@ -3,16 +3,3 @@
     width: 960px;
     height: 100vh;
 }
-
-.container button {
-    height: 50px;
-    width: 200px;
-    border: 2px solid #1b2735;
-    font-size: 21px;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-}
-
-.container button:hover {
-    border: 2px solid rgba(255, 255, 255, 0.23);
-}

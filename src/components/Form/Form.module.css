@@ -1,0 +1,28 @@
+.form {
+    padding: 20px 20px 20px 20px;
+    margin-top: 70px;
+    width: 50%;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 2px solid rgba(255, 255, 255, 0.23);
+    border-radius: 5%;
+}
+
+.form .input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form .textarea {
+    width: 100%;
+    height: 80px;
+}
+
+.form .button {
+    height: 40px;
+    width: 200px;
+}
