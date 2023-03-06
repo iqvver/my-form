@@ -1,11 +1,12 @@
 .form {
     padding: 20px 20px 20px 20px;
     margin-top: 70px;
-    width: 50%;
+    width: 100%;
     min-height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: flex-end;
     border: 2px solid rgba(255, 255, 255, 0.23);
     border-radius: 5%;
 }

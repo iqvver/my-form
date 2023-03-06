@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
-import Form from "../components/Form/Form";
-import list from "../store/anyName.json";
+import React, { useState } from "react";
+import Form from "../../components/Form/Form";
 
-const SubmitForm = () => {
-  let [usersList, setObj] = useState(list.users);
+const SubmitForm = ({showUsers}) => {
   let [phone, setPhone] = useState("");
   let [name, setName] = useState("");
   let [message, setMessage] = useState("");
@@ -17,9 +15,6 @@ const SubmitForm = () => {
       message,
     };
 
-    setObj((usersList = [...usersList, newUser]));
-    console.log("obj", usersList);
-
     fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
@@ -30,19 +25,12 @@ const SubmitForm = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log("data", data);
+        showUsers(true);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
-  useEffect(() => {
-    fetch("http://localhost:3000/users")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("users", data);
-      });
-  }, [usersList]);
 
   return (
     <>
