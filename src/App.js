@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import app from './App.module.css';
+import SubmitForm from './components/Form/SubmitForm';
 
 function App() {
+  const [form, showForm] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={app.container}>
+      <button onClick={() => showForm((form) => !form)}>{form ? <span>Скрыть форму</span> : <span>Показать форму</span>}</button>
+      {form ?
+        <SubmitForm /> : null
+      }
     </div>
   );
 }
