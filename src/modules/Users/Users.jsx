@@ -11,7 +11,7 @@ const Users = () => {
         setUsers(data);
       });
   }, []);
-  console.log("obj", usersList);
+  //console.log("obj", usersList);
 
   return (
     <>

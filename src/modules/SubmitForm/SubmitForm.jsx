@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Form from "../../components/Form/Form";
 
-const SubmitForm = ({showUsers}) => {
+const SubmitForm = ({ showUsers, showError, showSuccess }) => {
   let [phone, setPhone] = useState("");
   let [name, setName] = useState("");
   let [message, setMessage] = useState("");
@@ -15,6 +15,12 @@ const SubmitForm = ({showUsers}) => {
       message,
     };
 
+    const submitSuccess = () => {
+      showUsers(true);
+      showSuccess(true);
+      setTimeout(() => showSuccess(false), 3000);
+    };
+
     fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
@@ -25,10 +31,13 @@ const SubmitForm = ({showUsers}) => {
       .then((res) => res.json())
       .then((data) => {
         console.log("data", data);
-        showUsers(true);
+        {
+          data.id ? submitSuccess() : showError(true);
+        }
       })
       .catch((error) => {
-        console.log(error);
+        showError(true);
+        console.log("error", error);
       });
   };
 
