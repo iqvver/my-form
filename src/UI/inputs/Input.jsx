@@ -1,16 +1,19 @@
 import style from "./Input.module.css";
+import React from "react";
+import InputMask from "react-input-mask";
 
 const Input = (props) => {
-  const { required, name, type, getChange, placeholder } = props;
+  const { required, name, getChange, placeholder, value, mask } = props;
   return (
     <>
-      <input
-        className={style.input}
-        required={required}
+      <InputMask
         name={name}
-        type={type}
+        value={value}
         onChange={getChange}
+        mask={mask}
         placeholder={placeholder}
+        required={required}
+        className={style.input}
       />
     </>
   );

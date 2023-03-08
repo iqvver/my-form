@@ -4,7 +4,8 @@ import Input from "../../UI/inputs/Input";
 import Textarea from "../../UI/textareas/Textarea";
 import submit from "./Form.module.css";
 
-const Form = ({ onSubmit, setPhone, setName, setMessage }) => {
+const Form = (props) => {
+  const { onSubmit, setPhone, setName, setMessage, phone, name } = props;
   return (
     <form onSubmit={(e) => onSubmit(e)} name="user" className={submit.form}>
       <div className={submit.input}>
@@ -14,6 +15,8 @@ const Form = ({ onSubmit, setPhone, setName, setMessage }) => {
           type={"tel"}
           getChange={(e) => setPhone(e.target.value)}
           placeholder={"Ваш телефон"}
+          value={phone}
+          mask="+7 (999) 999-99-99"
         />
         <Input
           required={"required"}
@@ -21,6 +24,8 @@ const Form = ({ onSubmit, setPhone, setName, setMessage }) => {
           type={"text"}
           getChange={(e) => setName(e.target.value)}
           placeholder={"Ваше имя"}
+          value={name}
+          mask={null}
         />
         <div className={submit.textarea}>
           <Textarea

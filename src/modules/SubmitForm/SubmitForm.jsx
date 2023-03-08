@@ -6,11 +6,17 @@ const SubmitForm = ({ showUsers, showError, showSuccess }) => {
   let [name, setName] = useState("");
   let [message, setMessage] = useState("");
 
+  // if (/^[0-9A-Za-z]+$/.test(name)) {
+  //   console.log('da')
+  // } else {
+  //   console.log('net')
+  // }
+
   const onSubmit = async (e) => {
     e.preventDefault();
     let newUser = {
       //id: obj.length,
-      phone,
+      phone: "+" + phone.replace(/[^0-9]/g, ""),
       name,
       message,
     };
@@ -31,9 +37,7 @@ const SubmitForm = ({ showUsers, showError, showSuccess }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log("data", data);
-        {
-          data.id ? submitSuccess() : showError(true);
-        }
+        data.id ? submitSuccess() : showError(true);
       })
       .catch((error) => {
         showError(true);
@@ -46,7 +50,9 @@ const SubmitForm = ({ showUsers, showError, showSuccess }) => {
       <Form
         onSubmit={onSubmit}
         setPhone={setPhone}
+        phone={phone}
         setName={setName}
+        name={name}
         setMessage={setMessage}
       />
     </>
