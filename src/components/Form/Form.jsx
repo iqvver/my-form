@@ -5,7 +5,16 @@ import Textarea from "../../UI/textareas/Textarea";
 import submit from "./Form.module.css";
 
 const Form = (props) => {
-  const { onSubmit, setPhone, setName, setMessage, phone, name } = props;
+  const {
+    onSubmit,
+    setPhone,
+    setName,
+    setMessage,
+    phone,
+    name,
+    nameError,
+    messageError,
+  } = props;
   return (
     <form onSubmit={(e) => onSubmit(e)} name="user" className={submit.form}>
       <div className={submit.input}>
@@ -27,14 +36,18 @@ const Form = (props) => {
           value={name}
           mask={null}
         />
-        <div className={submit.textarea}>
-          <Textarea
-            name={"message"}
-            getChange={(e) => setMessage(e.target.value)}
-            placeholder={"Ваше сообщение"}
-          />
-        </div>
+        {nameError ? <div>pizda</div> : <div>ne pizda</div>}
       </div>
+
+      <div className={submit.textarea}>
+        <Textarea
+          name={"message"}
+          getChange={(e) => setMessage(e.target.value)}
+          placeholder={"Ваше сообщение"}
+        />
+        {messageError ? <div>mess</div> : <div>mesError</div>}
+      </div>
+
       <div className={submit.button}>
         <Button buttonType="submit" buttonName={"Отправить"} />
       </div>

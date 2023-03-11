@@ -18,7 +18,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "concurrently \"json-server -w src/store/anyName.json -s /\" \"open-cli http://localhost:3000/users\""
   },
   "eslintConfig": {
     "extends": [

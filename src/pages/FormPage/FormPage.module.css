@@ -1,12 +1,11 @@
 .wrapper {
     width: 80%;
+    height: auto;
     display: flex;
     justify-content: space-evenly;
 }
 
-.form {
-    width: 50vh;
-}
+.form {}
 
 .users {
     width: 30%;

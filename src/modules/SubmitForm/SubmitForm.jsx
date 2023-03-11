@@ -1,16 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Form from "../../components/Form/Form";
 
 const SubmitForm = ({ showUsers, showError, showSuccess }) => {
   let [phone, setPhone] = useState("");
   let [name, setName] = useState("");
+  let [nameError, setNameError] = useState(false);
   let [message, setMessage] = useState("");
+  let [messageError, setMessageError] = useState(false);
 
-  // if (/^[0-9A-Za-z]+$/.test(name)) {
-  //   console.log('da')
-  // } else {
-  //   console.log('net')
-  // }
+  useEffect(() => {
+    if (!/^[0-9A-Za-z\-_]+$/.test(name)) {
+      setNameError(true);
+    } else {
+      setNameError(false);
+    }
+  }, [name]);
+  useEffect(() => {
+    if (!/^[0-9A-Za-z\-_]+$/.test(message)) {
+      setMessageError(true);
+    } else {
+      setMessageError(false);
+    }
+  }, [message]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -53,7 +64,9 @@ const SubmitForm = ({ showUsers, showError, showSuccess }) => {
         phone={phone}
         setName={setName}
         name={name}
+        nameError={nameError}
         setMessage={setMessage}
+        messageError={messageError}
       />
     </>
   );
