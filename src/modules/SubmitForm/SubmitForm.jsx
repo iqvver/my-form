@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { userAPI } from "../../api/Api";
 import Form from "../../components/Form/Form";
+import { inputError } from "../../helpers/utilsError";
 import "./inputError.css";
 
 const SubmitForm = ({ showUsers, showError, showSuccess }) => {
@@ -33,49 +35,11 @@ const SubmitForm = ({ showUsers, showError, showSuccess }) => {
     }
   }, [message]);
 
-  const inputError = () => {
-    const inputPhone = document.user.phone;
-    const inputName = document.user.name;
-    const inputMessage = document.user.message;
-    if (phoneError) {
-      inputPhone.classList.add("inputError");
-      setTimeout(() => {
-        inputPhone.classList.remove("inputError");
-      }, 1000);
-    }
-    if (nameError) {
-      inputName.classList.add("inputError");
-      setTimeout(() => {
-        inputName.classList.remove("inputError");
-      }, 1000);
-    }
-    if (messageError) {
-      inputMessage.classList.add("inputError");
-      setTimeout(() => {
-        inputMessage.classList.remove("inputError");
-      }, 1000);
-    }
-  };
-
   const checkingForm = (newUser, submitSuccess) => {
     if (phoneError || nameError || messageError) {
-      inputError();
+      inputError(phoneError, nameError, messageError);
     } else {
-      fetch("http://localhost:3000/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUser),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          data.id ? submitSuccess() : showError(true);
-        })
-        .catch((error) => {
-          showError(true);
-          console.log("error", error);
-        });
+      userAPI.sendUsers(newUser, submitSuccess, showError);
     }
   };
 

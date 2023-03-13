@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import User from "../../components/User/User";
+import { userAPI } from "../../api/Api";
 import style from "./Users.module.css";
 
 const Users = () => {
   let [usersList, setUsers] = useState();
   useEffect(() => {
-    fetch("http://localhost:3000/users")
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data);
-      });
+    return async () => {
+      let users = await userAPI.getUsers();
+      setUsers(users);
+    };
   }, []);
-  //console.log("obj", usersList);
 
   return (
     <>
