@@ -12,11 +12,19 @@ const Users = () => {
     };
   }, []);
 
+  const removeUser = (id) => {
+    let newUsersList = usersList.filter((user) => user.id !== id);
+    setUsers(newUsersList);
+    userAPI.deleteUsers(id);
+  };
+
   return (
     <>
       <div className={style.users}>
         {usersList ? (
-          usersList.map((user) => <User key={user.id} user={user} />)
+          usersList.map((user) => (
+            <User key={user.id} user={user} del={() => removeUser(user.id)} />
+          ))
         ) : (
           <div>Loading</div>
         )}

@@ -1,11 +1,11 @@
 // компонент Api в котором формируется запрос на сервер и получает ответ
 // базовый адрес запроса на сервер
-const baseURL = `http://localhost:3000/`;
+const baseURL = `http://localhost:3000/users/`;
 
 // получение массива со всеми пользователями
 export const userAPI = {
     async getUsers() {
-        const res = await fetch(baseURL + "users", {
+        const res = await fetch(baseURL, {
             headers: {
                 "Content-Type": "application/json"
             },
@@ -15,7 +15,7 @@ export const userAPI = {
     },
 
     sendUsers(newUser, submitSuccess, showError) {
-        fetch(baseURL + "users", {
+        fetch(baseURL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -30,5 +30,11 @@ export const userAPI = {
                 showError(true);
                 console.log("error", error);
             });
+    },
+
+    deleteUsers(userId) {
+        fetch(`${baseURL}${userId}`, {
+            method: "DELETE",
+        });
     }
 }

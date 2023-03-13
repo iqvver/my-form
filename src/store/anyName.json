@@ -1,37 +1,10 @@
 {
   "users": [
     {
-      "phone": "+784621313",
+      "phone": "+75564654654",
       "name": "Vasia",
       "message": "gg bb",
       "id": 0
-    },
-    {
-      "phone": "+75564654654",
-      "name": "dcc",
-      "message": "ccvv",
-      "id": 1
-    },
-    {
-      "id": 2
-    },
-    {
-      "phone": "+76756756756",
-      "name": "*",
-      "message": "hgh",
-      "id": 3
-    },
-    {
-      "phone": "+76756756756",
-      "name": "*",
-      "message": "hgh",
-      "id": 4
-    },
-    {
-      "phone": "+74646516516",
-      "name": "dsadf",
-      "message": "dddd",
-      "id": 5
     }
   ]
 }
