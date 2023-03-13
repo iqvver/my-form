@@ -14,29 +14,46 @@ const Form = (props) => {
     name,
     nameError,
     messageError,
+    phoneError,
   } = props;
   return (
     <form onSubmit={(e) => onSubmit(e)} name="user" className={submit.form}>
       <div className={submit.input}>
-        <Input
-          required={"required"}
-          name={"phone"}
-          type={"tel"}
-          getChange={(e) => setPhone(e.target.value)}
-          placeholder={"Ваш телефон"}
-          value={phone}
-          mask="+7 (999) 999-99-99"
-        />
-        <Input
-          required={"required"}
-          name={"name"}
-          type={"text"}
-          getChange={(e) => setName(e.target.value)}
-          placeholder={"Ваше имя"}
-          value={name}
-          mask={null}
-        />
-        {nameError ? <div>pizda</div> : <div>ne pizda</div>}
+        <div className={submit.phone}>
+          <Input
+            id={"phone"}
+            required={"required"}
+            name={"phone"}
+            type={"tel"}
+            getChange={(e) => setPhone(e.target.value)}
+            placeholder={"Ваш телефон"}
+            value={phone}
+            mask="+7 (999) 999-99-99"
+          />
+          {phoneError ? (
+            <div className={submit.error}>Не правильно введен номер</div>
+          ) : (
+            <div className={submit.success}>Готово</div>
+          )}
+        </div>
+        <div className={submit.name}>
+          <Input
+            required={"required"}
+            name={"name"}
+            type={"text"}
+            getChange={(e) => setName(e.target.value)}
+            placeholder={"Ваше имя"}
+            value={name}
+            mask={null}
+          />
+          {nameError ? (
+            <div className={submit.error}>
+              Присутствуют допустимые символы/поле пусто
+            </div>
+          ) : (
+            <div className={submit.success}>Готово</div>
+          )}
+        </div>
       </div>
 
       <div className={submit.textarea}>
@@ -45,7 +62,13 @@ const Form = (props) => {
           getChange={(e) => setMessage(e.target.value)}
           placeholder={"Ваше сообщение"}
         />
-        {messageError ? <div>mess</div> : <div>mesError</div>}
+        {messageError ? (
+          <div className={submit.error}>
+            Присутствуют допустимые символы/поле пусто
+          </div>
+        ) : (
+          <div className={submit.success}>Готово</div>
+        )}
       </div>
 
       <div className={submit.button}>
